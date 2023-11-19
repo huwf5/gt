@@ -69,6 +69,24 @@
         </el-descriptions-item>
         <el-descriptions-item>
           <template #label>
+            QuicAddr
+            <UsageTooltip :usage-text="ServerConfig.usage['QuicAddr']" />
+          </template>
+          <el-form-item prop="QuicAddr">
+            <el-input v-model="localSetting.QuicAddr" />
+          </el-form-item>
+        </el-descriptions-item>
+        <el-descriptions-item>
+          <template #label>
+            OpenBBR
+            <UsageTooltip :usage-text="ServerConfig.usage['OpenBBR']" />
+          </template>
+          <el-form-item prop="OpenBBR">
+            <el-switch v-model="localSetting.OpenBBR" />
+          </el-form-item>
+        </el-descriptions-item>
+        <el-descriptions-item>
+          <template #label>
             HTTPMUXHeader
             <UsageTooltip :usage-text="ServerConfig.usage['HTTPMUXHeader']" />
           </template>
@@ -119,7 +137,8 @@ const rules = reactive<FormRules<ServerConfig.NetworkSetting>>({
   Addr: [{ validator: validatorAddr, trigger: "blur" }],
   TLSAddr: [{ validator: validatorAddr, trigger: "blur" }],
   STUNAddr: [{ validator: validatorAddr, trigger: "blur" }],
-  SNIAddr: [{ validator: validatorAddr, trigger: "blur" }]
+  SNIAddr: [{ validator: validatorAddr, trigger: "blur" }],
+  QuicAddr: [{validator: validatorAddr, trigger: "blur"}],
 });
 
 const validateForm = (): Promise<void> => {

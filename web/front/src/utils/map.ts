@@ -16,6 +16,7 @@ export const mapClientGeneralSetting = (data: Config.Client.ResConfig): ClientCo
   RemoteAPI: data.config.RemoteAPI,
   RemoteCert: data.config.RemoteCert,
   RemoteCertInsecure: data.config.RemoteCertInsecure,
+  OpenBBR: data.config.OpenBBR,
   RemoteConnections: data.config.RemoteConnections,
   RemoteIdleConnections: data.config.RemoteIdleConnections,
   RemoteTimeout: humanizeDuration(data.config.RemoteTimeout)
@@ -43,6 +44,7 @@ export const mapClientSentrySetting = (data: Config.Client.ResConfig): ClientCon
  */
 export const mapClientWebRTCSetting = (data: Config.Client.ResConfig): ClientConfig.WebRTCSetting => ({
   WebRTCConnectionIdleTimeout: humanizeDuration(data.config.WebRTCConnectionIdleTimeout),
+  WebRTCRemoteConnections: data.config.WebRTCRemoteConnections,
   WebRTCLogLevel: data.config.WebRTCLogLevel,
   WebRTCMinPort: data.config.WebRTCMinPort,
   WebRTCMaxPort: data.config.WebRTCMaxPort
@@ -217,6 +219,8 @@ export const mapServerNetworkSetting = (data: Config.Server.ResConfig): ServerCo
   STUNAddr: data.config.STUNAddr,
   STUNLogLevel: data.config.STUNLogLevel,
   SNIAddr: data.config.SNIAddr,
+  QuicAddr: data.config.QuicAddr,
+  OpenBBR: data.config.OpenBBR,
   HTTPMUXHeader: data.config.HTTPMUXHeader,
   MaxHandShakeOptions: data.config.MaxHandShakeOptions
 });

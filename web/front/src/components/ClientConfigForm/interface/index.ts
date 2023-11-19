@@ -12,6 +12,7 @@ export namespace ClientConfig {
     RemoteAPI: string;
     RemoteCert: string;
     RemoteCertInsecure: boolean;
+    OpenBBR: boolean;
     RemoteConnections: number;
     RemoteIdleConnections: number;
     RemoteTimeout: string;
@@ -27,6 +28,7 @@ export namespace ClientConfig {
   }
   export interface WebRTCSetting {
     WebRTCConnectionIdleTimeout: string;
+    WebRTCRemoteConnections: number;
     WebRTCLogLevel: string;
     WebRTCMinPort: number;
     WebRTCMaxPort: number;
@@ -63,6 +65,7 @@ export namespace ClientConfig {
     RemoteAPI: "",
     RemoteCert: "",
     RemoteCertInsecure: false,
+    OpenBBR: false,
     RemoteConnections: 1,
     RemoteIdleConnections: 0
   };
@@ -77,6 +80,7 @@ export namespace ClientConfig {
   };
   export const defaultWebRTCSetting: WebRTCSetting = {
     WebRTCConnectionIdleTimeout: "0s",
+    WebRTCRemoteConnections: 30,
     WebRTCLogLevel: "",
     WebRTCMinPort: 0,
     WebRTCMaxPort: 0
@@ -108,7 +112,7 @@ export namespace ClientConfig {
     ID: "The unique id used to connect to server. Now it's the prefix of the domain.",
     Secret: "The secret used to verify the id",
     ReconnectDelay: "The delay before reconnect. Supports values like '30s', '5m'",
-    Remote: "The remote server url. Supports tcp:// and tls://, default tcp://",
+    Remote: "The remote server url. Supports 'tcp://', 'tls://' and 'quic://', default 'tcp://'",
     RemoteSTUN: "The remote STUN server address",
     RemoteAPI: "The API to get remote server url",
     RemoteCert: "The path to remote cert",
@@ -116,6 +120,8 @@ export namespace ClientConfig {
     RemoteConnections: "The max number of server connections in the pool. Valid value is 1 to 10",
     RemoteIdleConnections: "The number of idle server connections kept in the pool",
     RemoteTimeout: "The timeout of remote connections. Supports values like '30s', '5m'",
+    OpenBBR:
+      "Use bbr as congestion control algorithm (through msquic) when GT use QUIC connection. Default algorithm is Cubic (through quic-go)",
     Version: "Show the version of this program",
 
     // Service Setting
@@ -138,6 +144,7 @@ export namespace ClientConfig {
 
     // WebRTC Setting
     WebRTCConnectionIdleTimeout: "The timeout of WebRTC connection. Supports values like '30s', '5m'",
+    WebRTCRemoteConnections: "The max number of webrtc connections. Valid value is 1 to 50",
     WebRTCLogLevel: "WebRTC log level: verbose, info, warning, error",
     WebRTCMinPort: "The min port of WebRTC peer connection",
     WebRTCMaxPort: "The max port of WebRTC peer connection",

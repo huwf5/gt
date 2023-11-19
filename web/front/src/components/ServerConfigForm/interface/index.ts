@@ -47,6 +47,8 @@ export namespace ServerConfig {
     STUNAddr: string;
     STUNLogLevel: string;
     SNIAddr: string;
+    QuicAddr: string;
+    OpenBBR: boolean;
     HTTPMUXHeader: string;
     MaxHandShakeOptions: number;
   }
@@ -126,6 +128,8 @@ export namespace ServerConfig {
     STUNAddr: "",
     STUNLogLevel: "",
     SNIAddr: "",
+    QuicAddr: "",
+    OpenBBR: false,
     HTTPMUXHeader: "",
     MaxHandShakeOptions: 0
   };
@@ -256,6 +260,11 @@ export namespace ServerConfig {
       Regex: "The host regex",
       WithID: "The host with id",
       usedHost: "The used host"
-    }
+    },
+
+    QuicAddr:
+      "The address for quic connection (between GT client and GT server) to listen on. Supports values like: '443', ':443' or '0.0.0.0:443'",
+    OpenBBR:
+      "Use bbr as congestion control algorithm (through msquic) when GT use QUIC connection. Default algorithm is Cubic (through quic-go)."
   };
 }

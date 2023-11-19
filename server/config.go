@@ -100,8 +100,8 @@ type Options struct {
 
 	Signal string `arg:"s" yaml:"-" json:"-" usage:"Send signal to client processes. Supports values: restart, stop, kill"`
 
-	QuicAddr string `yaml:"quicAddr" usage:"The address for quic connection (between GT client and GT server) to listen on. Supports values like: '443', ':443' or '0.0.0.0:443'"`
-	OpenBBR  bool   `yaml:"bbr" usage:"Use bbr as congestion control algorithm (through msquic) when GT use QUIC connection. Default algorithm is Cubic (through quic-go)."`
+	QuicAddr string `yaml:"quicAddr,omitempty" json:",omitempty" usage:"The address for quic connection (between GT client and GT server) to listen on. Supports values like: '443', ':443' or '0.0.0.0:443'"`
+	OpenBBR  bool   `yaml:"bbr,omitempty" json:",omitempty" usage:"Use bbr as congestion control algorithm (through msquic) when GT use QUIC connection. Default algorithm is Cubic (through quic-go)."`
 }
 
 func defaultConfig() Config {

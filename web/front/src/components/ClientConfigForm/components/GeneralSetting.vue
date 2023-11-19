@@ -92,6 +92,14 @@
           </template>
           <el-switch v-model="localSetting.RemoteCertInsecure" active-text="true" inactive-text="false" />
         </el-descriptions-item>
+        <!-- OpenBBR -->
+        <el-descriptions-item>
+          <template #label>
+            OpenBBR
+            <UsageTooltip :usage-text="ClientConfig.usage['OpenBBR']" />
+          </template>
+          <el-switch v-model="localSetting.OpenBBR" active-text="true" inactive-text="false" />
+        </el-descriptions-item>
         <!-- RemoteConnections -->
         <el-descriptions-item>
           <template #label>
@@ -157,7 +165,7 @@ const validatorRemote = (rule: any, value: any, callback: any) => {
   console.log("Calling validatorRemote");
   if (!value) {
     callback();
-  } else if (value.startsWith("tls://") || value.startsWith("tcp://")) {
+  } else if (value.startsWith("tls://") || value.startsWith("tcp://") || value.startsWith("quic://")) {
     console.log("Valid remote format");
     callback();
   } else {

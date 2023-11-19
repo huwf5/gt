@@ -25,6 +25,13 @@
         </el-descriptions-item>
         <el-descriptions-item>
           <template #label>
+            WebRTCRemoteConnections
+            <UsageTooltip :usage-text="ClientConfig.usage['WebRTCRemoteConnections']" />
+          </template>
+          <el-input-number v-model="localSetting.WebRTCRemoteConnections" :min="1" :max="50" />
+        </el-descriptions-item>
+        <el-descriptions-item>
+          <template #label>
             WebRTCMinPort
             <UsageTooltip :usage-text="ClientConfig.usage['WebRTCMinPort']" />
           </template>
