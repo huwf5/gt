@@ -42,7 +42,7 @@ type Options struct {
 	Secret                string               `yaml:"secret,omitempty" json:",omitempty" usage:"The secret used to verify the id"`
 	ReconnectDelay        config.Duration      `yaml:"reconnectDelay,omitempty" json:",omitempty" usage:"The delay before reconnect. Supports values like '30s', '5m'"`
 	Remote                config.Slice[string] `yaml:"remote,omitempty" json:",omitempty" usage:"The remote server url. Supports tcp:// and tls:// and quic://, default tcp://"`
-	RemoteSTUN            string               `yaml:"remoteSTUN,omitempty" json:",omitempty" usage:"The remote STUN server address"`
+	RemoteSTUN            config.Slice[string] `yaml:"remoteSTUN,omitempty" json:",omitempty" usage:"The remote STUN server address"`
 	RemoteAPI             string               `yaml:"remoteAPI,omitempty" json:",omitempty" usage:"The API to get remote server url"`
 	RemoteCert            string               `yaml:"remoteCert,omitempty" json:",omitempty" usage:"The path to remote cert"`
 	RemoteCertInsecure    bool                 `yaml:"remoteCertInsecure,omitempty" json:",omitempty" usage:"Accept self-signed SSL certs from remote"`
